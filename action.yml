@@ -17,11 +17,11 @@ inputs:
     default: ''
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: docker://quay.io/pypa/${{ inputs.manylinux-image }}
   env:
     PLAT: ${{ inputs.manylinux-image }}
-  entrypoint: '/entrypoint.sh'
   args:
+    - /github/workflow/entrypoint.sh
     - ${{ inputs.python-versions }}
     - ${{ inputs.build-requirements }}
 branding:

@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -e -x
+set -e -x
 
 # CLI arguments
 PY_VERSIONS=$1
