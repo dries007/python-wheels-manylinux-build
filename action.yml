@@ -3,11 +3,15 @@ name: 'Python wheels manylinux build'
 author: 'Ralf Gabriels'
 description: 'Build manylinux wheels for a (Cython) Python package'
 inputs:
-  python-versions:
+  python_versions:
     description: 'Python versions to target, space-separated'
     required: true
     default: 'cp36-cp36m cp37-cp37m cp38-cp38'
-  build-requirements:
+  manylinux_image:
+    description: 'Manylinux image to use'
+    required: false
+    default: 'manylinux1_x86_64'
+  build_requirements:
     description: 'Packages required at build time, space-separated'
     required: false
     default: ''
@@ -15,7 +19,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    PLAT: 'manylinux1_x86_64'
+    PLAT: ${{ inputs.manylinux-image }}
   entrypoint: '/entrypoint.sh'
   args:
     - ${{ inputs.python-versions }}
