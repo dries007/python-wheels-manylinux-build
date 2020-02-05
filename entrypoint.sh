@@ -15,11 +15,11 @@ for PY_VER in "${arrPY_VERSIONS[@]}"; do
 
     # Check if requirements were passed
     if [ ! -z "$BUILD_REQUIREMENTS" ]; then
-        /opt/python/${PY_VER}/bin/pip install "${INPUT_BUILD_REQUIREMENTS}" || { echo "Installing requirements failed."; exit 1; }
+        /opt/python/${PY_VER}/bin/pip -v install "${INPUT_BUILD_REQUIREMENTS}" || { echo "Installing requirements failed."; exit 1; }
     fi
     
     # Build wheels
-    /opt/python/${PY_VER}/bin/pip wheel /github/workspace/ -w /github/workspace/wheelhouse/ || { echo "Building wheels failed."; exit 1; }
+    /opt/python/${PY_VER}/bin/pip -v wheel /github/workspace/ -w /github/workspace/wheelhouse/ || { echo "Building wheels failed."; exit 1; }
 done
 
 # Bundle external shared libraries into the wheels
