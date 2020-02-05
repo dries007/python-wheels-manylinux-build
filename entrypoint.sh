@@ -8,6 +8,8 @@ fi
 # Compile wheels
 arrPY_VERSIONS=(${INPUT_PYTHON_VERSIONS// / })
 for PY_VER in "${arrPY_VERSIONS[@]}"; do
+    echo "Now processing $PY_VER..."
+
     # Update pip
     /opt/python/${PY_VER}/bin/pip install --upgrade pip
 
