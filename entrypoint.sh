@@ -24,7 +24,7 @@ done
 
 # Bundle external shared libraries into the wheels
 for whl in /github/workspace/wheelhouse/*.whl; do
-    auditwheel repair "$whl" --plat manylinux1_x86_64 -w /github/workspace/wheelhouse/
+    auditwheel repair "$whl" --plat manylinux2014_x86_64 -w /github/workspace/wheelhouse/
 done
 
 echo "Succesfully build wheels:"
