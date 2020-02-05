@@ -3,15 +3,15 @@ name: 'Python wheels manylinux build'
 author: 'Ralf Gabriels'
 description: 'Build manylinux wheels for a (Cython) Python package'
 inputs:
-  python-versions:
+  python_versions:
     description: 'Python versions to target, space-separated'
     required: true
     default: 'cp36-cp36m cp37-cp37m cp38-cp38'
-  build-requirements:
+  build_requirements:
     description: 'pip packages required at build time, space-separated'
     required: false
     default: ''
-  pre-build:
+  pre_build:
     description: 'pre-build script'
     required: false
     default: ''
@@ -21,10 +21,6 @@ runs:
   env:
     PLAT: 'manylinux2014_x86_64'
   entrypoint: '/entrypoint.sh'
-  args:
-    - ${{ inputs.python-versions }}
-    - ${{ inputs.build-requirements }}
-    - ${{ inputs.pre-build }}
 branding:
   icon: 'package'
   color: 'green'
