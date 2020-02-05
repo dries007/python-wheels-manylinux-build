@@ -4,10 +4,10 @@
 # CLI arguments
 PY_VERSIONS=$1
 BUILD_REQUIREMENTS=$2
-SYSTEM_PACKAGES=$3
+PRE_BUILD=$3
 
-if [ ! -z "$SYSTEM_PACKAGES" ]; then
-    yum install -y ${SYSTEM_PACKAGES}  || { echo "Installing yum package(s) failed."; exit 1; }
+if [ ! -z "$PRE_BUILD" ]; then
+    eval "${PRE_BUILD}"  || { echo "Evaluating pre-build script failed."; exit 1; }
 fi
 
 # Compile wheels
